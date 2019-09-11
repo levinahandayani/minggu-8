@@ -1,0 +1,23 @@
+//unlink FS = hapus data/file
+
+//panggil library fs
+const fs = require('fs');
+
+/*baca file terserah.txt apakah ada filenya?
+menggunakan fs.readFile */
+fs.readFile('terserah.txt', async (err, data) => {
+    //jika data tidak ditemukan
+    if(err) return console.log("Data tidak ditemukan");
+
+    //jalankan console.log dulu menggunakan await 
+    await console.log("Data ditemukan!");
+
+    //data ditemukan kita langsung eksekusi delete
+    fs.unlink('terserah.txt', (err) => {
+        //jika gagal delete
+        if(err) return console.log("Gagal hapus data!");
+
+        //jika berhasil delete
+        console.log("Hapus data berhasil!");
+    })
+})
